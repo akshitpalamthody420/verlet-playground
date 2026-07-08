@@ -7,122 +7,66 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <nav class="nav">
-      <div class="logo">Verlet Playground</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#controls">Controls</a>
-        <a href="#setup">Setup</a>
-      </div>
+  <header class="topbar">
+    <div>
+      <h1>Verlet Playground</h1>
+      <p>C++ SFML physics project with a browser-playable Canvas version.</p>
+    </div>
+
+    <nav>
+      <a href="#sim">Play</a>
+      <a href="#about">About</a>
+      <a href="#controls">Controls</a>
+      <a href="#setup">Setup</a>
     </nav>
-
-    <section class="hero-content">
-      <p class="eyebrow">C++ / SFML Physics Simulation</p>
-      <h1>Interactive 2D Verlet Physics Sandbox</h1>
-      <p class="subtitle">
-        A real-time physics playground that simulates particles, ropes, cloth,
-        and soft bodies using Verlet integration and distance constraints.
-      </p>
-
-      <div class="hero-actions">
-        <a class="button primary" href="https://github.com/akshitsmail/verlet-playground" target="_blank">
-          View Source
-        </a>
-        <a class="button secondary" href="#setup">
-          Build Instructions
-        </a>
-      </div>
-    </section>
   </header>
 
   <main>
-    <section id="about" class="section">
-      <div class="section-header">
-        <p class="eyebrow">What it does</p>
-        <h2>Particles, constraints, and real-time interaction</h2>
+    <section id="sim" class="sim-section">
+      <div class="sim-header">
+        <div>
+          <p class="label">Live Demo</p>
+          <h2>Interactive Verlet Physics Simulation</h2>
+          <p>
+            Drag, pin, cut, spawn ropes, generate cloth, and create soft bodies directly in the browser.
+          </p>
+        </div>
+
+        <div class="status-panel">
+          <span id="gravityStatus">Gravity: On</span>
+          <span id="windStatus">Wind: Off</span>
+          <span id="tearStatus">Tearing: On</span>
+        </div>
       </div>
 
-      <div class="content-card">
-        <p>
-          Verlet Playground is an interactive 2D physics simulation built in C++ with SFML.
-          The simulation uses particles as physics points and connects them with distance
-          constraints. By combining those constraints, the project can create ropes,
-          cloth sheets, and soft-body structures.
-        </p>
-
-        <p>
-          The user can drag particles, pin points in place, cut constraints, toggle wind,
-          toggle gravity, and spawn different physics structures during runtime.
-        </p>
+      <div class="canvas-wrap">
+        <canvas id="simCanvas" width="1100" height="680"></canvas>
       </div>
     </section>
 
-    <section id="features" class="section">
-      <div class="section-header">
-        <p class="eyebrow">Core systems</p>
-        <h2>Features</h2>
-      </div>
+    <section id="about" class="section">
+      <p class="label">What it does</p>
+      <h2>Particles connected by constraints</h2>
 
-      <div class="grid">
-        <article class="feature-card">
-          <h3>Verlet Motion</h3>
-          <p>
-            Particles store current and previous positions instead of explicit velocity,
-            producing stable motion that works well for constraint-based simulations.
-          </p>
-        </article>
+      <div class="card">
+        <p>
+          Verlet Playground simulates particles using Verlet integration. Each particle stores its
+          current and previous position, and motion is produced by comparing the two positions over time.
+        </p>
 
-        <article class="feature-card">
-          <h3>Distance Constraints</h3>
-          <p>
-            Particles are linked together by constraints that preserve distance,
-            making ropes, cloth grids, and soft-body forms possible.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <h3>Interactive Editing</h3>
-          <p>
-            Mouse input lets users drag, pin, unpin, and cut particles or constraints
-            while the simulation is running.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <h3>Multiple Structures</h3>
-          <p>
-            The project can spawn ropes, cloth sheets, and soft-body blobs instead of
-            only simulating one chain of connected particles.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <h3>Wind and Gravity Toggles</h3>
-          <p>
-            Environmental forces can be enabled or disabled during runtime to test how
-            different structures react.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <h3>Tearing and Cutting</h3>
-          <p>
-            Constraints can break under stress or be cut manually, making the simulation
-            more dynamic than a fixed particle system.
-          </p>
-        </article>
+        <p>
+          Particles are connected with distance constraints. When many constraints are combined, they can
+          form ropes, cloth sheets, and soft-body shapes. The browser version below recreates the main idea
+          of the C++ SFML project so the simulation can run on GitHub Pages.
+        </p>
       </div>
     </section>
 
     <section id="controls" class="section">
-      <div class="section-header">
-        <p class="eyebrow">How to use it</p>
-        <h2>Controls</h2>
-      </div>
+      <p class="label">How to use it</p>
+      <h2>Controls</h2>
 
-      <div class="table-card">
+      <div class="table-wrap">
         <table>
           <thead>
             <tr>
@@ -131,66 +75,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Left Mouse</td>
-              <td>Drag nearest particle</td>
-            </tr>
-            <tr>
-              <td>Right Mouse</td>
-              <td>Pin or unpin nearest particle</td>
-            </tr>
-            <tr>
-              <td>Middle Mouse</td>
-              <td>Cut constraints near the cursor</td>
-            </tr>
-            <tr>
-              <td>Space</td>
-              <td>Spawn a pinned rope at the cursor</td>
-            </tr>
-            <tr>
-              <td>C</td>
-              <td>Spawn a cloth sheet near the cursor</td>
-            </tr>
-            <tr>
-              <td>B</td>
-              <td>Spawn a soft-body blob at the cursor</td>
-            </tr>
-            <tr>
-              <td>W</td>
-              <td>Toggle wind</td>
-            </tr>
-            <tr>
-              <td>T</td>
-              <td>Toggle tearing</td>
-            </tr>
-            <tr>
-              <td>G</td>
-              <td>Toggle gravity</td>
-            </tr>
-            <tr>
-              <td>R</td>
-              <td>Reset demo scene</td>
-            </tr>
-            <tr>
-              <td>Backspace / Delete</td>
-              <td>Clear the world</td>
-            </tr>
-            <tr>
-              <td>Escape</td>
-              <td>Quit</td>
-            </tr>
+            <tr><td>Left Mouse</td><td>Drag nearest particle</td></tr>
+            <tr><td>Right Mouse</td><td>Pin or unpin nearest particle</td></tr>
+            <tr><td>Middle Mouse</td><td>Cut constraints near the cursor</td></tr>
+            <tr><td>Space</td><td>Spawn rope at cursor</td></tr>
+            <tr><td>C</td><td>Spawn cloth at cursor</td></tr>
+            <tr><td>B</td><td>Spawn soft body at cursor</td></tr>
+            <tr><td>W</td><td>Toggle wind</td></tr>
+            <tr><td>T</td><td>Toggle tearing</td></tr>
+            <tr><td>G</td><td>Toggle gravity</td></tr>
+            <tr><td>R</td><td>Reset demo scene</td></tr>
+            <tr><td>Delete / Backspace</td><td>Clear simulation</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section id="setup" class="section">
-      <div class="section-header">
-        <p class="eyebrow">Run locally</p>
-        <h2>Setup</h2>
-      </div>
+      <p class="label">Desktop version</p>
+      <h2>Build the C++ SFML project</h2>
 
-      <div class="content-card">
+      <div class="card">
         <h3>Requirements</h3>
         <ul>
           <li>C++17 or newer</li>
@@ -213,17 +118,14 @@ cd build
 cmake -DCMAKE_PREFIX_PATH="$(brew --prefix sfml@2)" ..
 cmake --build .
 ./VerletPlayground</code></pre>
-
-        <p class="note">
-          This GitHub Pages site is a project page. The SFML application itself runs as a native desktop app,
-          not directly inside the browser.
-        </p>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <p>Built with C++, SFML, Verlet integration, and constraint-based physics.</p>
+  <footer>
+    <p>Built with C++, SFML, JavaScript Canvas, Verlet integration, and constraint-based physics.</p>
   </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
