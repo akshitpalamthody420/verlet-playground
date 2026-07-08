@@ -4,6 +4,7 @@ const ctx = canvas.getContext("2d");
 const gravityToggle = document.getElementById("gravityToggle");
 const windToggle = document.getElementById("windToggle");
 const tearToggle = document.getElementById("tearToggle");
+const resetButton = document.getElementById("resetButton");
 
 let width = canvas.width;
 let height = canvas.height;
@@ -13,7 +14,7 @@ let constraints = [];
 
 let gravityEnabled = true;
 let windEnabled = false;
-let tearingEnabled = true;
+let tearingEnabled = false;
 
 let mouse = {
   x: width / 2,
@@ -305,6 +306,10 @@ windToggle.addEventListener("click", () => {
 tearToggle.addEventListener("click", () => {
   tearingEnabled = !tearingEnabled;
   updateStatuses();
+});
+
+resetButton.addEventListener("click", () => {
+  resetScene();
 });
 
 function resizeCanvasToDisplaySize() {
