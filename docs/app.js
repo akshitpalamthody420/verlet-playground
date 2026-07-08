@@ -1,9 +1,9 @@
 const canvas = document.getElementById("simCanvas");
 const ctx = canvas.getContext("2d");
 
-const gravityStatus = document.getElementById("gravityStatus");
-const windStatus = document.getElementById("windStatus");
-const tearStatus = document.getElementById("tearStatus");
+const gravityToggle = document.getElementById("gravityToggle");
+const windToggle = document.getElementById("windToggle");
+const tearToggle = document.getElementById("tearToggle");
 
 let width = canvas.width;
 let height = canvas.height;
@@ -283,10 +283,29 @@ function distancePointToSegment(px, py, x1, y1, x2, y2) {
 }
 
 function updateStatuses() {
-  gravityStatus.textContent = `Gravity: ${gravityEnabled ? "On" : "Off"}`;
-  windStatus.textContent = `Wind: ${windEnabled ? "On" : "Off"}`;
-  tearStatus.textContent = `Tearing: ${tearingEnabled ? "On" : "Off"}`;
+  gravityToggle.textContent = `Gravity: ${gravityEnabled ? "On" : "Off"}`;
+  windToggle.textContent = `Wind: ${windEnabled ? "On" : "Off"}`;
+  tearToggle.textContent = `Tearing: ${tearingEnabled ? "On" : "Off"}`;
+
+  gravityToggle.classList.toggle("active", gravityEnabled);
+  windToggle.classList.toggle("active", windEnabled);
+  tearToggle.classList.toggle("active", tearingEnabled);
 }
+
+gravityToggle.addEventListener("click", () => {
+  gravityEnabled = !gravityEnabled;
+  updateStatuses();
+});
+
+windToggle.addEventListener("click", () => {
+  windEnabled = !windEnabled;
+  updateStatuses();
+});
+
+tearToggle.addEventListener("click", () => {
+  tearingEnabled = !tearingEnabled;
+  updateStatuses();
+});
 
 function resizeCanvasToDisplaySize() {
   const rect = canvas.getBoundingClientRect();

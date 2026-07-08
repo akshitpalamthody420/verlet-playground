@@ -231,3 +231,34 @@ footer {
     width: auto;
   }
 }
+
+.control-panel {
+  min-width: 190px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.toggle {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+}
+
+.toggle:hover {
+  color: var(--text);
+  border-color: var(--blue);
+}
+
+.toggle.active {
+  color: var(--text);
+  background: rgba(0, 176, 255, 0.14);
+  border-color: rgba(0, 176, 255, 0.7);
+}
