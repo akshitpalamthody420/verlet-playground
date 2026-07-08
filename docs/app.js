@@ -415,10 +415,6 @@ window.addEventListener("keydown", (event) => {
     updateStatuses();
   }
 
-  if (event.key.toLowerCase() === "r") {
-    resetScene();
-  }
-
   if (event.key === "Backspace" || event.key === "Delete") {
     clearWorld();
   }
